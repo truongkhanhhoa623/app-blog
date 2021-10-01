@@ -1,6 +1,6 @@
-const mongoose = require("mongoose");
-const slug = require("mongoose-slug-generator");
-const Schema = mongoose.Schema;
+const mongoose = require("mongoose")
+const slug = require("mongoose-slug-generator")
+const Schema = mongoose.Schema
 
 mongoose.plugin(slug)
 
@@ -13,4 +13,4 @@ const Post = new Schema({
     timestamps: true
 });
 
-module.exports = mongoose.model("Post", Post);
+module.exports = mongoose.model("Post", Post)
