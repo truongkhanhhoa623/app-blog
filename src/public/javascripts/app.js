@@ -8,4 +8,18 @@ document.addEventListener("DOMContentLoaded", function () {
   }).catch((error) => {
     console.error(error);
   });
+
+  let idDelete = null;
+  let btnDeletePost = document.querySelector("#btn-delete");
+  let formDeletePost = document.querySelector("#form-delete-post");
+  $("#confirmModalDelete").on("show.bs.modal", function (e) {
+    let button = $(e.relatedTarget);
+    idDelete = button.data("id");
+  });
+
+  btnDeletePost.addEventListener("click", function (e) {
+    formDeletePost.action = `/posts/${idDelete}/?_method=DELETE`;
+    formDeletePost.submit();
+    console.log("success");
+  });
 });

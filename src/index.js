@@ -1,16 +1,18 @@
 const express = require("express");
 const app = express();
 const router = require("./routes");
-const handlebars = require("express-handlebars");
 const path = require("path");
 
+//middleware
 const cookieParser = require("cookie-parser");
 const session = require("express-session");
 const cookieCheck = require("./middlewares/cookieChecker");
+const methodOverride = require("method-override");
 
-//helpers handlebars
-const dateFormat = require('handlebars-dateformat');
-const {  sliceString } = require('./helper/handlebars')
+//handlebars
+const handlebars = require("express-handlebars");
+const dateFormat = require("handlebars-dateformat");
+const { sliceString } = require("./helper/handlebars");
 
 //PORT
 const PORT = process.env.PORT || 4000;
@@ -20,7 +22,7 @@ const database = require("./config/db");
 database.connect();
 
 app.use(express.static(path.join(__dirname, "public")));
-app.use(express.urlencoded({extended: true}));
+app.use(express.urlencoded({ extended: true }));
 
 //init cookieParser
 app.use(cookieParser());
@@ -41,19 +43,21 @@ app.use(
 app.set("view engine", "hbs");
 app.set("views", path.join(__dirname, "resources", "views"));
 app.engine(
-  "hbs", 
+  "hbs",
   handlebars({
     defaultLayout: "main",
     extname: "hbs",
     helpers: {
       sliceString,
-      dateFormat 
+      dateFormat,
     },
   })
 );
 
 //check cookie
 app.use(cookieCheck);
+
+app.use(methodOverride("_method"));
 
 //Set variables locals for  user login
 app.use((req, res, next) => {

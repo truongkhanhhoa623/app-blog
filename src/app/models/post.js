@@ -11,6 +11,7 @@ const Post = new Schema(
     content: { type: String, default: "none" },
     image: { type: String },
     slug: { type: String, slug: "title", unique: true },
+    publish: { type: Boolean, default: false}
   },
   {
     timestamps: true,
