@@ -6,7 +6,7 @@ class HomeController {
   //[GET] /
   home(req, res, next) {
     Post.find({}).then((posts) => {
-      res.render("home", {
+      res.render("publish", {
         posts: mutipleMongooseToObject(posts),
         layout: "public",
       });
@@ -27,11 +27,11 @@ class HomeController {
       .then((user) => {
         user.comparePassword(password, (error, match) => {
           if (!match) {
-            res.redirect("/home/login");
+            res.redirect("home/login");
             return;
           }
           req.session.user = user;
-          console.log(req.session)
+          console.log(req.session);
           res.redirect("/user");
         });
       })
@@ -47,14 +47,23 @@ class HomeController {
   register(req, res, next) {
     const user = new User(req.body);
     // res.json(user);
-    user.save((err, docs) => {
-      if (err) {
-        res.redirect("/home/signup");
-        return;
-      }
-      req.session.user = docs;
-      res.redirect("/home/login");
-    });
+    user.save()
+        .then((docs) => {
+          req.session.user = docs;
+          console.log(req.session.user);
+          res.redirect("/home/login");
+        })
+        .catch((err) => {
+          res.redirect("/home/signup");
+        })
+    // => {
+    //   if (err) {
+    //     res.redirect("/home/signup");
+    //     return;
+    //   }
+    //   req.session.user = docs;
+    //   res.redirect("/home/login");
+    // });
   }
 }
 

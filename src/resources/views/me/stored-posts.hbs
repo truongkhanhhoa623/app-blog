@@ -1,0 +1,36 @@
+<section class="store">
+  <div class="container">
+    <div class="row">
+      <div class="col col-lg-12">
+        <div class="store__header">
+          <h1>Bài viết của bạn</h1>
+          <button class="">Viết bài</button>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+     <div class="col col-lg-6">
+          <h5>Bài viết đã đăng</h5>
+     </div>
+    </div>
+    <div class="row mt-4">
+      <div class="col col-lg-12">
+        <div class="store-list-published">
+
+          {{#each posts}}
+            <div class="store-list-published__item">
+              <h3 class="title">{{this.title}}</h3>
+              <p class="description">{{sliceString this.content}}...</p>
+              <div class="controler">
+                <span class="timeago">Đã đăng 20 phút trước</span>
+                <a class="edit" href="#">Chỉnh sửa</a>
+                <a class="delete" href="#">Xóa bài </a>
+              </div>
+            </div>
+            <hr />
+          {{/each}}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

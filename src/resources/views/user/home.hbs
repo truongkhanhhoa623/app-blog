@@ -1,0 +1,35 @@
+<section class="page-posts">
+   
+        {{#each posts}}
+          <div class="post">
+                <hr>
+            <div class="row mt-2"> 
+              <div class="col col-lg-9">
+                <div class="post__head">
+                  <div class="author"> 
+                      <div class="author__image">
+                          <img src="">
+                      </div>
+                      <h6 class="author__name">{{ this.author }}</h6>
+                    </div>
+                   <p>{{dateFormat this.createdAt "dddd, MMMM Do "}}</p>
+                </div>
+                <h3 class="post__title"><a
+                    href="/posts/{{this.slug}}"
+                  >{{this.title}}</a></h3>
+                <p class="post__description">{{ sliceString this.content}}</p>
+                <div class="post__topic">
+                    <a href="#">Lập trình</a>
+                </div>
+              </div>
+              <div class="col col-lg-3 d-flex align-items-center">
+                <div class="post__image">
+                  <img src="{{this.image}}" alt="Image Javascript" />
+                </div>
+              </div>
+            </div>
+          </div>
+        {{/each}}
+
+
+</section>

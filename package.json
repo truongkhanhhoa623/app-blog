@@ -9,7 +9,8 @@
   "scripts": {
     "start": "node src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon  src/index.js"
+    "dev": "nodemon  src/index.js",
+    "watch": "node-sass -w src/resources/scss/app.scss src/public/stylesheets/app.css"
   },
   "keywords": [
     "nodejs",
@@ -24,9 +25,14 @@
     "express": "^4.17.1",
     "express-handlebars": "^5.3.4",
     "express-session": "^1.17.2",
+    "handlebars-dateformat": "^1.1.1",
     "mongodb": "^4.1.2",
     "mongoose": "^6.0.8",
+    "mongoose-sequence": "^5.3.1",
     "mongoose-slug-generator": "^1.0.4",
     "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "node-sass": "^6.0.1"
   }
 }

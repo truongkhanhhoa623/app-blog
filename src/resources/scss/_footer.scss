@@ -1,0 +1,44 @@
+@import "variable";
+
+.article {
+  padding: 40px;
+  position: sticky;
+  top: 0;
+  .topic {
+    &__list {
+      display: flex;
+      flex-wrap: wrap;
+      li {
+        margin-right: 10px;
+        margin-top: 10px;
+      }
+      a {
+        padding: 3px 12px;
+        color: $color-main;
+        background: rgb(242, 242, 242);
+        border-radius: 100px;
+      }
+      a:hover {
+        background: rgb(88, 88, 88);
+      }
+    }
+  }
+  .footer {
+    display: flex;
+    flex-wrap: wrap;
+    &__item {
+      font-weight: 700;
+      margin-right: 15px;
+    }
+  }
+  .contact{
+      &__list{
+          display: flex;
+          justify-content: center;
+          li{
+              font-size: 24px;
+              margin-right: 15px;
+          }
+      }
+  }
+}

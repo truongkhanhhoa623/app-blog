@@ -4,6 +4,6 @@ module.exports = {
     },
     mongooseToObject: (Array)=>{
         return Array ?  Array.toObject() : Array
-    }
+    } 
     
 }
